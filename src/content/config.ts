@@ -14,7 +14,7 @@ const keyboardsCollection = defineCollection({
       "frl-1800",
       "hhkb",
     ]),
-    plate: z.enum(["brass", "fr4", "aluminum", "acrylic"]),
+    plate: z.enum(["brass", "fr4", "aluminum", "acrylic", 'pc']),
   }),
 });
 
