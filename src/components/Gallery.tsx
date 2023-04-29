@@ -1,13 +1,59 @@
 import React from "react";
+import NavigationButton from "./NavigationButton";
 
 interface GalleryProps {
   images: string[];
 }
 
-export default function Gallery({ images }: GalleryProps) {
-  const [imgSrc, setImgSrc] = React.useState(images[0]);
+interface ThumbnailButtonProps {
+  image: string;
+  currentImgSrc: string;
+  onClick: () => void;
+}
 
-  const handleClick = (src: string) => setImgSrc(src);
+function ThumbnailButton({
+  image,
+  currentImgSrc,
+  onClick,
+}: ThumbnailButtonProps) {
+  return (
+    <button
+      key={image}
+      type="button"
+      style={{ all: "unset", height: "fit-content" }}
+      onClick={onClick}
+    >
+      <img
+        src={image}
+        style={{
+          width: "100%",
+          borderRadius: "10px",
+          opacity: image === currentImgSrc ? 0.5 : 1,
+        }}
+      />
+    </button>
+  );
+}
+
+export default function Gallery({ images }: GalleryProps) {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentImgSrc, setCurrentImgSrc] = React.useState(
+    images[currentIndex]
+  );
+
+  React.useEffect(() => {
+    if (currentIndex + 1 > images.length) {
+      setCurrentIndex(0);
+    }
+
+    if (currentIndex <= -1) {
+      setCurrentIndex(images.length - 1);
+    }
+    setCurrentImgSrc(images[currentIndex]);
+  }, [currentIndex, currentImgSrc, images]);
+
+  const increment = () => setCurrentIndex(currentIndex + 1);
+  const decrement = () => setCurrentIndex(currentIndex - 1);
 
   return (
     <div
@@ -17,11 +63,19 @@ export default function Gallery({ images }: GalleryProps) {
         gap: "30px",
       }}
     >
-      <img
-        src={imgSrc}
-        alt=""
-        style={{ width: "100%", borderRadius: "10px" }}
-      />
+      <div
+        style={{
+          position: "relative",
+        }}
+      >
+        <NavigationButton variant="backward" onClick={decrement} />
+        <img
+          src={currentImgSrc}
+          alt=""
+          style={{ width: "100%", borderRadius: "10px", columnSpan: "all" }}
+        />
+        <NavigationButton variant="forward" onClick={increment} />
+      </div>
       <div
         style={{
           width: "100%",
@@ -30,22 +84,13 @@ export default function Gallery({ images }: GalleryProps) {
           gap: 30,
         }}
       >
-        {images.map((image) => (
-          <button
+        {images.map((image, index) => (
+          <ThumbnailButton
             key={image}
-            type="button"
-            style={{ all: "unset", height: "fit-content" }}
-            onClick={() => handleClick(image)}
-          >
-            <img
-              src={image}
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                opacity: image === imgSrc ? 0.5 : 1,
-              }}
-            />
-          </button>
+            onClick={() => setCurrentIndex(index)}
+            image={image}
+            currentImgSrc={currentImgSrc}
+          />
         ))}
       </div>
     </div>
