@@ -1,0 +1,8 @@
+.astro/**
+.vscode/**
+dist/**
+node_modules/**
+public/**
+src/content/**
+src/pages/**
+src/env.d.ts
