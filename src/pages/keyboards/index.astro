@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+const keyboards = await getCollection("keyboards");
+---
+
+<h1>keyboards</h1>
+<ul>
+  {
+    keyboards.map((keyboard) => (
+      <li>
+        <a href={`keyboards/${keyboard.slug}`}>{keyboard.data.name}</a>
+      </li>
+    ))
+  }
+</ul>
