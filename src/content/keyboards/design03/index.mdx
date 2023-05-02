@@ -4,16 +4,8 @@ size: alice
 plate: acrylic
 ---
 
-import Gallery from "../../../components/Gallery.tsx";
-import pbtnotion001 from "./images/_pbt-notion-001.png";
-import pbtnotion002 from "./images/_pbt-notion-002.png";
-import pbtnotion003 from "./images/_pbt-notion-003.png";
-import back001 from "./images/_back-001.png";
-import back002 from "./images/_back-002.png";
+import Gallery from "../../../components/Gallery/Gallery.astro";
 
 ## PBT Notion
 
-<Gallery
-  images={[pbtnotion001, pbtnotion002, pbtnotion003, back001, back002]}
-  client:load
-/>
+<Gallery slug="design03" keycaps="pbt-notion" />

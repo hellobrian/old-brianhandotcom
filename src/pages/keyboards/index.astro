@@ -1,15 +1,57 @@
 ---
 import { getCollection } from "astro:content";
 const keyboards = await getCollection("keyboards");
+const imagesGlob = await Astro.glob("../../content/**/main/*.png");
+const images = imagesGlob.map((imageGlob) => imageGlob.default);
 ---
 
 <h1>keyboards</h1>
 <ul>
   {
-    keyboards.map((keyboard) => (
-      <li>
-        <a href={`keyboards/${keyboard.slug}`}>{keyboard.data.name}</a>
-      </li>
-    ))
+    keyboards.map((keyboard) => {
+      let keyboardImage = images.filter((image) =>
+        image.includes(keyboard.slug)
+      );
+      return (
+        <li>
+          <a href={`keyboards/${keyboard.slug}`}>
+            <div>
+              <img src={keyboardImage[0]} alt="" />
+              <span>{keyboard.data.name}</span>
+            </div>
+          </a>
+        </li>
+      );
+    })
   }
 </ul>
+
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 30px;
+    list-style-type: none;
+    padding: 0 30px;
+  }
+
+  div {
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: 99%;
+    border-radius: 10px;
+  }
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    font-size: 32px;
+    color: white;
+    border: 1px solid red;
+  }
+</style>

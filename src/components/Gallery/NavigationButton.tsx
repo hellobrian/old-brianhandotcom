@@ -3,14 +3,14 @@ import "./NavigationButton.css";
 
 type Variant = "forward" | "backward";
 
-interface ArrowRightProps {
+interface ArrowProps {
   variant: Variant;
 }
 
-function ArrowRight({ variant }: ArrowRightProps) {
+function Arrow({ variant }: ArrowProps) {
   return (
     <svg
-      className="ArrowRight"
+      className="Arrow"
       data-variant={variant}
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -39,7 +39,7 @@ export default function NavigationButton({
       data-variant={variant}
       onClick={onClick}
     >
-      <ArrowRight variant={variant} />
+      <Arrow variant={variant} />
     </button>
   );
 }

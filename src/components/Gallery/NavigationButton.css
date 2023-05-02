@@ -16,7 +16,7 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.NavigationButton:is(:hover, :focus) .ArrowRight {
+.NavigationButton:is(:hover, :focus) .Arrow {
   fill: white;
   transition: fill ease 200ms;
 }
@@ -29,10 +29,10 @@
   left: 0;
 }
 
-.ArrowRight {
+.Arrow {
   fill: none;
 }
 
-.ArrowRight[data-variant="backward"] {
+.Arrow[data-variant="backward"] {
   rotate: 180deg;
 }
