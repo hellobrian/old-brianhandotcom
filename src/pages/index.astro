@@ -1,13 +1,33 @@
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-    <a href="/keyboards">keyboards</a>
-  </body>
-</html>
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <main>
+    <section>
+      <p>
+        Hello! I'm a UX Developer based in Austin, TX. Born and raised in
+        Toronto, Canada. I like keyboards, houseplants and listening to music.
+      </p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  body {
+    background-color: var(--black);
+    color: var(--white);
+  }
+
+  section {
+    max-width: 120ch;
+    margin: 0 auto;
+    padding: var(--space-s) var(--space-s);
+  }
+
+  p {
+    color: var(--white-muted);
+    font-family: var(--roboto);
+    font-size: var(--step-1);
+  }
+</style>

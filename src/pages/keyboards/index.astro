@@ -3,28 +3,31 @@ import { getCollection } from "astro:content";
 const keyboards = await getCollection("keyboards");
 const imagesGlob = await Astro.glob("../../content/**/main/*.png");
 const images = imagesGlob.map((imageGlob) => imageGlob.default);
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<h1>keyboards</h1>
-<ul>
-  {
-    keyboards.map((keyboard) => {
-      let keyboardImage = images.filter((image) =>
-        image.includes(keyboard.slug)
-      );
-      return (
-        <li>
-          <a href={`keyboards/${keyboard.slug}`}>
-            <div>
-              <img src={keyboardImage[0]} alt="" />
-              <span>{keyboard.data.name}</span>
-            </div>
-          </a>
-        </li>
-      );
-    })
-  }
-</ul>
+<BaseLayout>
+  <h1>keyboards</h1>
+  <ul>
+    {
+      keyboards.map((keyboard) => {
+        let keyboardImage = images.filter((image) =>
+          image.includes(keyboard.slug)
+        );
+        return (
+          <li>
+            <a href={`keyboards/${keyboard.slug}`}>
+              <div>
+                <img src={keyboardImage[0]} alt="" />
+                <span>{keyboard.data.name}</span>
+              </div>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</BaseLayout>
 
 <style>
   ul {

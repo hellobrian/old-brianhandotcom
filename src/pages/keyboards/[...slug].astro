@@ -22,15 +22,18 @@ interface Props {
 
 const { keyboard } = Astro.props;
 const { Content } = await keyboard.render();
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<h1>{keyboard.data.name}</h1>
-<ul>
-  <li>
-    {keyboard.data.size}
-  </li>
-  <li>
-    {keyboard.data.plate}
-  </li>
-</ul>
-<Content />
+<BaseLayout>
+  <h1>{keyboard.data.name}</h1>
+  <ul>
+    <li>
+      {keyboard.data.size}
+    </li>
+    <li>
+      {keyboard.data.plate}
+    </li>
+  </ul>
+  <Content />
+</BaseLayout>

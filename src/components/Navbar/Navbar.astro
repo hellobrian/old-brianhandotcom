@@ -1,0 +1,164 @@
+<header id="header">
+  <div>
+    <h1><a href="/">Brian Han</a></h1>
+    <button type="button" id="menu">menu</button>
+  </div>
+</header>
+<nav id="nav" data-state="hide">
+  <div>
+    <h1><a href="/">Brian Han</a></h1>
+    <button type="button" id="close">close</button>
+  </div>
+  <ul>
+    <li><a href="/keyboards">keyboards</a></li>
+    <li><a href="/blog">blog</a></li>
+    <li><a href="/uses">uses</a></li>
+    <li><a href="/media">media</a></li>
+  </ul>
+</nav>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: var(--space-l-xl) var(--space-s);
+    opacity: var(--opacity);
+    background-color: var(--bg);
+    transition: opacity ease 200ms, background-color ease 200ms;
+  }
+
+  header > div {
+    display: flex;
+    align-items: center;
+    max-width: 120ch;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  header h1 {
+    font-family: var(--tanker);
+    color: var(--white);
+    font-weight: 400;
+    font-size: var(--step-4);
+  }
+
+  header h1:hover {
+    /* color: rgba(255 255 227, 0.8); */
+    color: #d6d6be;
+    transition: color ease 200ms;
+  }
+
+  header a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  header button {
+    all: unset;
+    color: var(--white);
+    font-family: var(--tanker);
+    border: 1px solid var(--gray);
+    font-size: var(--step-3);
+    padding: 0 var(--space-s);
+    transition: border ease 200ms;
+    background-color: var(--black);
+  }
+
+  button:hover {
+    border-color: var(--white);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: var(--white);
+    color: var(--black);
+    padding: var(--space-l-xl) var(--space-s);
+    transition: transform ease 200ms;
+  }
+
+  nav div {
+    display: flex;
+    align-items: center;
+    max-width: 120ch;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  nav h1 {
+    font-family: var(--tanker);
+    font-weight: 400;
+    font-size: var(--step-4);
+  }
+
+  nav h1 a {
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  nav h1:hover {
+    color: currentColor;
+  }
+
+  nav button {
+    all: unset;
+    color: var(--black);
+    font-family: var(--tanker);
+    border: 1px solid var(--gray);
+    font-size: var(--step-3);
+    padding: 0 var(--space-s);
+    transition: border ease 200ms;
+  }
+
+  nav button:hover {
+    border-color: currentColor;
+  }
+
+  [data-state="hide"] {
+    transform: translateY(-100%);
+  }
+
+  [data-state="show"] {
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  let prevScrollPos = window.pageYOffset;
+
+  const header = document.getElementById("header") as HTMLElement;
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    const isScrollingUp = prevScrollPos > currentScrollPos;
+    const isNearTop = currentScrollPos < 100;
+
+    header?.style.setProperty("--opacity", isScrollingUp ? "1" : "0");
+    header?.style.setProperty(
+      "--bg",
+      isNearTop ? "var(--black)" : "transparent"
+    );
+
+    prevScrollPos = currentScrollPos;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  const nav = document.getElementById("nav") as HTMLElement;
+  const menu = document.getElementById("menu") as HTMLElement;
+  const close = document.getElementById("close") as HTMLElement;
+
+  const handleMenuClick = () => {
+    nav.dataset.state = "show";
+  };
+
+  const handleCloseClick = () => {
+    nav.dataset.state = "hide";
+  };
+
+  menu.addEventListener("click", handleMenuClick);
+  close.addEventListener("click", handleCloseClick);
+</script>
