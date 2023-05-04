@@ -4,9 +4,11 @@
 :root {
   --black: #10100e;
   --white: #ffffe3;
-  --white-muted: #d5d5b8;
+  --muted: #d5d5b8;
   --gray: #30302b;
-  --accent: #e6ffb9;
+  --lime: #e6ffb9;
+  --gold: #ffc700;
+  --accent: var(--gold);
   /* font-size */
   --step--2: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);
   --step--1: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);

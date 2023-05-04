@@ -1,0 +1,42 @@
+---
+interface Props {
+  variant: "header" | "navigation-menu";
+}
+
+const { variant } = Astro.props;
+---
+
+<h1 data-variant={variant}><a href="/">Brian Han</a></h1>
+
+<style>
+  h1 {
+    font-weight: 400;
+    font-size: var(--step-4);
+    font-family: var(--tanker);
+  }
+
+  h1[data-variant="header"] {
+    color: var(--local-color);
+  }
+
+  h1[data-variant="navigation-menu"] {
+    color: var(--black);
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+</style>
+<!-- 
+<script>
+  const header = document.getElementById("header") as HTMLElement;
+  const h1 = document.querySelector("[data-variant='header']") as HTMLElement;
+
+  window.addEventListener("scroll", () => {
+    h1.style.setProperty(
+      "--local-color",
+      header.dataset.isNearTop === "true" ? "var(--white)" : "var(--accent)"
+    );
+  });
+</script> -->

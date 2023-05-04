@@ -5,10 +5,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout>
   <main>
     <section>
+      <p>Hello!</p>
       <p>
-        Hello! I'm a UX Developer based in Austin, TX. Born and raised in
-        Toronto, Canada. I like keyboards, houseplants and listening to music.
+        My name is Brian. I'm a Senior UX Developer at Indeed based in Austin,
+        TX. I enjoy building mechanical keyboards, listening to music and taking
+        care of houseplants.
       </p>
+      <p>I do a few things on this website:</p>
+      <ul>
+        <li>
+          writing about stuff:
+          <ul>
+            <li>
+              building things on the web, living life, literal stuff that I
+              bought
+            </li>
+          </ul>
+        </li>
+        <li>
+          archiving photos and details about my modest keyboard collection
+        </li>
+        <li>keeping track of music that I've been enjoying</li>
+      </ul>
     </section>
   </main>
 </BaseLayout>
@@ -20,14 +38,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
 
   section {
+    display: grid;
+    gap: var(--space-s);
     max-width: 120ch;
     margin: 0 auto;
     padding: var(--space-s) var(--space-s);
   }
 
-  p {
-    color: var(--white-muted);
+  p,
+  ul {
+    color: var(--muted);
     font-family: var(--roboto);
     font-size: var(--step-1);
+  }
+
+  li::marker {
+    color: var(--accent);
   }
 </style>

@@ -1,0 +1,72 @@
+---
+import HomeMenuWrapper from "./HomeMenuWrapper.astro";
+import HomeLink from "./HomeLink.astro";
+---
+
+<nav id="nav" data-state="hide">
+  <HomeMenuWrapper>
+    <HomeLink variant={"navigation-menu"} />
+    <button type="button" id="close">close</button>
+  </HomeMenuWrapper>
+  <ul>
+    <li><a href="/keyboards">keyboards</a></li>
+    <li><a href="/blog">blog</a></li>
+    <li><a href="/uses">uses</a></li>
+    <li><a href="/media">media</a></li>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: var(--white);
+    color: var(--black);
+    padding: var(--space-l-xl) var(--space-s);
+    transition: transform ease 200ms;
+  }
+
+  button {
+    all: unset;
+    color: var(--black);
+    font-family: var(--tanker);
+    border: 1px solid var(--gray);
+    font-size: var(--step-3);
+    padding: 0 var(--space-s);
+    transition: border ease 200ms;
+  }
+
+  button:hover {
+    border-color: currentColor;
+  }
+
+  [data-state="hide"] {
+    transform: translateY(-100%);
+  }
+
+  [data-state="show"] {
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const nav = document.getElementById("nav") as HTMLElement;
+  const menu = document.getElementById("menu") as HTMLElement;
+  const close = document.getElementById("close") as HTMLElement;
+  const body = document.querySelector("body") as HTMLElement;
+
+  const handleMenuClick = () => {
+    nav.dataset.state = "show";
+    body.style.overflowY = "hidden";
+  };
+
+  const handleCloseClick = () => {
+    nav.dataset.state = "hide";
+    body.style.overflowY = "initial";
+  };
+
+  menu.addEventListener("click", handleMenuClick);
+  close.addEventListener("click", handleCloseClick);
+</script>
