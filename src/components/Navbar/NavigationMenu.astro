@@ -1,17 +1,14 @@
 ---
-import HomeMenuWrapper from "./HomeMenuWrapper.astro";
-import HomeLink from "./HomeLink.astro";
 import NavBarButton from "./NavBarButton.astro";
 ---
 
 <dialog id="dialog">
-  <nav id="nav">
-    <HomeMenuWrapper>
-      <HomeLink variant={"navigation-menu"} />
-      <NavBarButton variant="close">close</NavBarButton>
-    </HomeMenuWrapper>
+  <nav>
+    <NavBarButton variant="close">close</NavBarButton>
+
     <ul>
       <li><a href="/blog">blog</a></li>
+      <li><a href="/uses">uses</a></li>
     </ul>
   </nav>
 </dialog>
@@ -19,23 +16,21 @@ import NavBarButton from "./NavBarButton.astro";
 <style>
   @keyframes slidein {
     from {
-      transform: translateX(100%);
+      transform: translateY(-100%);
     }
 
     to {
-      transform: translateX(0%);
+      transform: translateY(0%);
     }
   }
 
   dialog {
-    animation: slidein 200ms ease;
-    overflow: hidden;
-    min-width: 400px;
-    margin-left: auto;
+    animation: slidein 100ms ease-out;
+    margin: auto;
     padding: 0;
-    border: none;
-    height: 100%;
+    border: 4px solid var(--black);
     background-color: var(--white);
+    border-radius: 14px;
   }
 
   dialog::backdrop {
@@ -48,11 +43,12 @@ import NavBarButton from "./NavBarButton.astro";
   }
 
   nav {
-    width: 100%;
-    background-color: var(--white);
-    color: var(--black);
     padding: var(--space-l-xl) var(--space-s);
-    transition: transform ease 200ms;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-s);
+    min-width: 300px;
   }
 
   button {
@@ -85,26 +81,31 @@ import NavBarButton from "./NavBarButton.astro";
     padding: 0;
     marrgin: 0;
     width: 100%;
-    border: 1px solid var(--black);
   }
 
   li > a {
     color: var(--black);
     font-family: var(--tanker);
-    font-size: var(--step-3);
+    font-weight: 400;
+    font-size: var(--step-1);
     display: inline-block;
     padding: var(--space-s) 0;
-    padding-left: var(--space-s);
     text-decoration-color: var(--black);
     text-underline-offset: 4px;
-    width: 100%;
+    text-decoration-color: var(--very-muted);
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: var(--space-s);
+    width: 200px;
+    border-radius: 14px;
   }
 
-  li > a:is(:hover, :focus) {
+  /* li > a:is(:hover, :focus) {
     text-decoration-color: var(--accent);
     background: var(--black);
     color: var(--white);
-  }
+  } */
 </style>
 
 <script>
@@ -130,7 +131,7 @@ import NavBarButton from "./NavBarButton.astro";
   menuButton.addEventListener("click", handleMenuClick);
   closeButton.addEventListener("click", handleCloseClick);
   dialog.addEventListener("click", (e) => {
-    if (e.target !== body) {
+    if (e.target === dialog) {
       body.style.overflowY = "initial";
       dialog.close();
     }
