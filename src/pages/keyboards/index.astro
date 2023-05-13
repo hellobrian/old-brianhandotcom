@@ -1,7 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 const keyboards = await getCollection("keyboards");
-const imagesGlob = await Astro.glob("../../content/**/main/*.png");
+const imagesGlob = await Astro.glob(
+  "../../../public/images/keyboards/**/main/*.png"
+);
 const images = imagesGlob.map((imageGlob) => imageGlob.default);
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---

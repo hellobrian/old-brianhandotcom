@@ -1,6 +1,8 @@
 ---
 const { slug, keycaps } = Astro.props;
-const allKeyboardImages = await Astro.glob("../../content/keyboards/**/*.png");
+const allKeyboardImages = await Astro.glob(
+  "../../../public/images/keyboards/**/*.png"
+);
 const filteredImages = allKeyboardImages
   .map((imageObj) => imageObj.default)
   .filter((str: string) => str.includes(slug))
