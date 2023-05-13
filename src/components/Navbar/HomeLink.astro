@@ -4,11 +4,13 @@ interface Props {
 }
 
 const { variant } = Astro.props;
+const underlineColor =
+  variant !== "navigation-menu" ? "var(--white)" : "var(--black)";
 ---
 
 <h1 data-variant={variant}><a href="/">Brian Han</a></h1>
 
-<style>
+<style define:vars={{ underlineColor }}>
   h1 {
     font-weight: 400;
     font-size: var(--step-4);
@@ -25,18 +27,12 @@ const { variant } = Astro.props;
 
   a {
     color: currentColor;
-    text-decoration: none;
+    text-decoration-color: var(--underlineColor);
+    text-underline-offset: 4px;
+    pointer-events: auto;
+  }
+
+  a:is(:hover, :focus) {
+    text-decoration-color: var(--accent);
   }
 </style>
-<!-- 
-<script>
-  const header = document.getElementById("header") as HTMLElement;
-  const h1 = document.querySelector("[data-variant='header']") as HTMLElement;
-
-  window.addEventListener("scroll", () => {
-    h1.style.setProperty(
-      "--local-color",
-      header.dataset.isNearTop === "true" ? "var(--white)" : "var(--accent)"
-    );
-  });
-</script> -->
