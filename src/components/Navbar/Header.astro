@@ -14,9 +14,10 @@ import HomeLink from "./HomeLink.astro";
   header {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     padding: var(--space-l-xl) var(--space-s);
     transition: background-color ease 200ms;
+    pointer-events: none;
   }
 
   header[data-is-near-top="false"] {
@@ -36,6 +37,7 @@ import HomeLink from "./HomeLink.astro";
     padding: 0 var(--space-s);
     transition: border ease 200ms;
     background-color: var(--black);
+    pointer-events: auto;
   }
 
   button:hover {
