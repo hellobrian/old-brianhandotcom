@@ -68,3 +68,11 @@ select {
 body {
   font-family: sans-serif;
 }
+
+.button-reset {
+  margin: 0;
+  padding: 0;
+  background: 0;
+  border: none;
+  pointer-events: auto;
+}

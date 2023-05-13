@@ -1,12 +1,13 @@
 ---
 import HomeMenuWrapper from "./HomeMenuWrapper.astro";
 import HomeLink from "./HomeLink.astro";
+import NavBarButton from "./NavBarButton.astro";
 ---
 
 <header id="header" data-is-scrolling-up="false" data-is-near-top="true">
   <HomeMenuWrapper>
     <HomeLink variant={"header"} />
-    <button type="button" id="menu">menu</button>
+    <NavBarButton name="menu" variant="menu" />
   </HomeMenuWrapper>
 </header>
 
@@ -26,28 +27,6 @@ import HomeLink from "./HomeLink.astro";
 
   header[data-is-near-top="true"] {
     background-color: var(--black);
-  }
-
-  button {
-    all: unset;
-    color: var(--white);
-    font-family: var(--tanker);
-    border: 1px solid var(--gray);
-    font-size: var(--step-3);
-    padding: 0 var(--space-s);
-    transition: border ease 200ms;
-    background-color: var(--black);
-    pointer-events: auto;
-  }
-
-  button:hover {
-    border-color: var(--white);
-  }
-
-  [data-is-near-top="false"] button {
-    background-color: transparent;
-    border-color: var(--accent);
-    color: var(--accent);
   }
 </style>
 

@@ -1,12 +1,13 @@
 ---
 import HomeMenuWrapper from "./HomeMenuWrapper.astro";
 import HomeLink from "./HomeLink.astro";
+import NavBarButton from "./NavBarButton.astro";
 ---
 
 <nav id="nav" data-state="hide">
   <HomeMenuWrapper>
     <HomeLink variant={"navigation-menu"} />
-    <button type="button" id="close">close</button>
+    <NavBarButton name="close" variant="close" />
   </HomeMenuWrapper>
   <ul>
     <li><a href="/keyboards">keyboards</a></li>
@@ -89,8 +90,8 @@ import HomeLink from "./HomeLink.astro";
 
 <script>
   const nav = document.getElementById("nav") as HTMLElement;
-  const menu = document.getElementById("menu") as HTMLElement;
-  const close = document.getElementById("close") as HTMLElement;
+  const menu = document.querySelector("[data-variant='menu']") as HTMLElement;
+  const close = document.querySelector("[data-variant='close']") as HTMLElement;
   const body = document.querySelector("body") as HTMLElement;
 
   const handleMenuClick = () => {
