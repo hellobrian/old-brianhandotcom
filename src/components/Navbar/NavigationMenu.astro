@@ -7,7 +7,7 @@ import NavBarButton from "./NavBarButton.astro";
 <nav id="nav" data-state="hide">
   <HomeMenuWrapper>
     <HomeLink variant={"navigation-menu"} />
-    <NavBarButton name="close" variant="close" />
+    <NavBarButton variant="close">close</NavBarButton>
   </HomeMenuWrapper>
   <ul>
     <li><a href="/keyboards">keyboards</a></li>
@@ -60,6 +60,7 @@ import NavBarButton from "./NavBarButton.astro";
     grid-template-columns: 1fr 1fr;
     gap: var(--space-s);
     margin: var(--space-xl) 0;
+    padding: 0 var(--space-s);
   }
 
   li {
@@ -89,7 +90,7 @@ import NavBarButton from "./NavBarButton.astro";
 </style>
 
 <script>
-  const nav = document.getElementById("nav") as HTMLElement;
+  const nav = document.querySelector("#nav") as HTMLElement;
   const menu = document.querySelector("[data-variant='menu']") as HTMLElement;
   const close = document.querySelector("[data-variant='close']") as HTMLElement;
   const body = document.querySelector("body") as HTMLElement;

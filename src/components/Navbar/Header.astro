@@ -7,7 +7,7 @@ import NavBarButton from "./NavBarButton.astro";
 <header id="header" data-is-scrolling-up="false" data-is-near-top="true">
   <HomeMenuWrapper>
     <HomeLink variant={"header"} />
-    <NavBarButton name="menu" variant="menu" />
+    <NavBarButton variant="menu">menu</NavBarButton>
   </HomeMenuWrapper>
 </header>
 
@@ -19,47 +19,22 @@ import NavBarButton from "./NavBarButton.astro";
     padding: var(--space-l-xl) var(--space-s);
     transition: background-color ease 200ms;
     pointer-events: none;
-  }
-
-  header[data-is-near-top="false"] {
-    background-color: transparent;
-  }
-
-  header[data-is-near-top="true"] {
-    background-color: var(--black);
+    background-color: var(--local-background-color);
   }
 </style>
 
 <script>
-  let prevScrollPos = window.pageYOffset;
-
   const header = document.getElementById("header") as HTMLElement;
 
-  const setScrollState = () => {
+  const changeHeaderBgColor = () => {
     const currentScrollPos = window.pageYOffset;
-    const isScrollingUp = prevScrollPos > currentScrollPos;
     const isNearTop = currentScrollPos < 150;
 
-    header.dataset.isScrollingUp = isScrollingUp ? "true" : "false";
-    header.dataset.isNearTop = isNearTop ? "true" : "false";
-
-    prevScrollPos = currentScrollPos;
-  };
-
-  const changeHomeLinkColor = () => {
-    const homeLink = document.querySelector(
-      "[data-variant='header']"
-    ) as HTMLElement;
-    homeLink.style.setProperty(
-      "--local-color",
-      header.dataset.isNearTop === "true" ? "var(--white)" : "var(--accent)"
+    header.style.setProperty(
+      "--local-background-color",
+      isNearTop === true ? "var(--black)" : "transparent"
     );
   };
 
-  const handleScroll = () => {
-    setScrollState();
-    changeHomeLinkColor();
-  };
-
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", changeHeaderBgColor);
 </script>

@@ -1,17 +1,15 @@
 ---
 interface Props {
-  name: string;
   variant: "menu" | "close" | "accent";
 }
-const { name, variant } = Astro.props;
+const { variant } = Astro.props;
 ---
 
 <button
   data-variant={variant}
   class:list={["button-reset", `${variant}`]}
   type="button"
-  id="button"
-  data-testid={`navbar-button--${name}`}>{name}</button
+  id="button"><slot /></button
 >
 <style>
   [data-variant="menu"] {
@@ -57,16 +55,12 @@ const { name, variant } = Astro.props;
   const button = document.getElementById("button") as HTMLElement;
   let initialVariant = button.dataset.variant;
 
-  const setScrollState = () => {
+  const changeButtonVariant = () => {
     const currentScrollPos = window.pageYOffset;
     const isNearTop = currentScrollPos < 150;
 
     button.dataset.variant = isNearTop ? initialVariant : "accent";
   };
 
-  const handleScroll = () => {
-    setScrollState();
-  };
-
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", changeButtonVariant);
 </script>

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant: "header" | "navigation-menu";
+  variant: "header" | "navigation-menu" | "accent";
 }
 
 const { variant } = Astro.props;
@@ -36,3 +36,20 @@ const underlineColor =
     text-decoration-color: var(--accent);
   }
 </style>
+<script>
+  const homeLink = document.querySelector(
+    "[data-variant='header']"
+  ) as HTMLElement;
+
+  const changeHomeLinkColor = () => {
+    const currentScrollPos = window.pageYOffset;
+    const isNearTop = currentScrollPos < 150;
+
+    homeLink.style.setProperty(
+      "--local-color",
+      isNearTop === true ? "var(--white)" : "var(--accent)"
+    );
+  };
+
+  window.addEventListener("scroll", changeHomeLinkColor);
+</script>
