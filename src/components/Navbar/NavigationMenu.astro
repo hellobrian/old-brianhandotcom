@@ -4,24 +4,32 @@ import HomeLink from "./HomeLink.astro";
 import NavBarButton from "./NavBarButton.astro";
 ---
 
-<nav id="nav" data-state="hide">
-  <HomeMenuWrapper>
-    <HomeLink variant={"navigation-menu"} />
-    <NavBarButton variant="close">close</NavBarButton>
-  </HomeMenuWrapper>
-  <ul>
-    <li><a href="/keyboards">keyboards</a></li>
-    <li><a href="/blog">blog</a></li>
-    <li><a href="/uses">uses</a></li>
-    <li><a href="/media">media</a></li>
-  </ul>
-</nav>
+<dialog id="dialog">
+  <nav id="nav" data-state="hide">
+    <HomeMenuWrapper>
+      <HomeLink variant={"navigation-menu"} />
+      <NavBarButton variant="close">close</NavBarButton>
+    </HomeMenuWrapper>
+    <ul>
+      <li><a href="/blog">blog</a></li>
+      <li><a href="/uses">uses</a></li>
+      <li><a href="/media">media</a></li>
+    </ul>
+  </nav>
+</dialog>
 
 <style>
+  dialog {
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: red;
+    border: none;
+  }
+  dialog::backdrop {
+    background-color: #ffffe3; /* var(--white) */
+  }
   nav {
-    position: fixed;
-    top: 0;
-    z-index: 2;
     width: 100%;
     background-color: var(--white);
     color: var(--black);
@@ -30,13 +38,13 @@ import NavBarButton from "./NavBarButton.astro";
   }
 
   button {
-    all: unset;
     color: var(--black);
     font-family: var(--tanker);
     border: 1px solid var(--gray);
     font-size: var(--step-3);
     padding: 0 var(--space-s);
     transition: border ease 200ms;
+    cursor: pointer;
   }
 
   button:hover {
@@ -44,20 +52,12 @@ import NavBarButton from "./NavBarButton.astro";
     color: var(--white);
   }
 
-  [data-state="hide"] {
-    transform: translateY(-100%);
-  }
-
-  [data-state="show"] {
-    transform: translateY(0);
-  }
-
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-s);
     margin: var(--space-xl) 0;
     padding: 0 var(--space-s);
@@ -94,15 +94,18 @@ import NavBarButton from "./NavBarButton.astro";
   const menu = document.querySelector("[data-variant='menu']") as HTMLElement;
   const close = document.querySelector("[data-variant='close']") as HTMLElement;
   const body = document.querySelector("body") as HTMLElement;
+  const dialog = document.getElementById("dialog") as HTMLDialogElement;
 
   const handleMenuClick = () => {
-    nav.dataset.state = "show";
+    // nav.dataset.state = "show";
     body.style.overflowY = "hidden";
+    dialog.showModal();
   };
 
   const handleCloseClick = () => {
-    nav.dataset.state = "hide";
+    // nav.dataset.state = "hide";
     body.style.overflowY = "initial";
+    dialog.close();
   };
 
   menu.addEventListener("click", handleMenuClick);
