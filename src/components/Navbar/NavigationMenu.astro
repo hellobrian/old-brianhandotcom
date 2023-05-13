@@ -5,30 +5,48 @@ import NavBarButton from "./NavBarButton.astro";
 ---
 
 <dialog id="dialog">
-  <nav id="nav" data-state="hide">
+  <nav id="nav">
     <HomeMenuWrapper>
       <HomeLink variant={"navigation-menu"} />
       <NavBarButton variant="close">close</NavBarButton>
     </HomeMenuWrapper>
     <ul>
       <li><a href="/blog">blog</a></li>
-      <li><a href="/uses">uses</a></li>
-      <li><a href="/media">media</a></li>
     </ul>
   </nav>
 </dialog>
 
 <style>
+  @keyframes slidein {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0%);
+    }
+  }
+
   dialog {
-    min-width: 100%;
-    margin: 0;
+    animation: slidein 200ms ease;
+    overflow: hidden;
+    min-width: 400px;
+    margin-left: auto;
     padding: 0;
-    background-color: red;
     border: none;
+    height: 100%;
+    background-color: var(--white);
   }
+
   dialog::backdrop {
-    background-color: #ffffe3; /* var(--white) */
+    background-color: rgba(255, 255, 227, 0.5);
   }
+
+  dialog[open] {
+    animation-duration: 200ms;
+    animation-name: slidein;
+  }
+
   nav {
     width: 100%;
     background-color: var(--white);
@@ -90,24 +108,31 @@ import NavBarButton from "./NavBarButton.astro";
 </style>
 
 <script>
-  const nav = document.querySelector("#nav") as HTMLElement;
-  const menu = document.querySelector("[data-variant='menu']") as HTMLElement;
-  const close = document.querySelector("[data-variant='close']") as HTMLElement;
+  const menuButton = document.querySelector(
+    "[data-variant='menu']"
+  ) as HTMLElement;
+  const closeButton = document.querySelector(
+    "[data-variant='close']"
+  ) as HTMLElement;
   const body = document.querySelector("body") as HTMLElement;
   const dialog = document.getElementById("dialog") as HTMLDialogElement;
 
   const handleMenuClick = () => {
-    // nav.dataset.state = "show";
     body.style.overflowY = "hidden";
     dialog.showModal();
   };
 
   const handleCloseClick = () => {
-    // nav.dataset.state = "hide";
     body.style.overflowY = "initial";
     dialog.close();
   };
 
-  menu.addEventListener("click", handleMenuClick);
-  close.addEventListener("click", handleCloseClick);
+  menuButton.addEventListener("click", handleMenuClick);
+  closeButton.addEventListener("click", handleCloseClick);
+  dialog.addEventListener("click", (e) => {
+    if (e.target !== body) {
+      body.style.overflowY = "initial";
+      dialog.close();
+    }
+  });
 </script>
