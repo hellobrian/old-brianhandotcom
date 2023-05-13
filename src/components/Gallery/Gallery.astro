@@ -1,8 +1,6 @@
----
+<!-- ---
 const { slug, keycaps } = Astro.props;
-const allKeyboardImages = await Astro.glob(
-  "../../../public/images/keyboards/**/*.png"
-);
+const allKeyboardImages = await Astro.glob("/images/keyboards/**/*.png");
 const filteredImages = allKeyboardImages
   .map((imageObj) => imageObj.default)
   .filter((str: string) => str.includes(slug))
@@ -14,4 +12,4 @@ const sortedImages = new Set([...mainImageStr, ...filteredImages]);
 import Gallery from "./Gallery";
 ---
 
-<Gallery images={[...sortedImages]} client:load />
+<Gallery images={[...sortedImages]} client:load /> -->

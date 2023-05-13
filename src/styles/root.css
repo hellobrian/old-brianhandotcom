@@ -46,6 +46,7 @@
 
   /* font-family */
   --tanker: "Tanker", sans-serif; /* titles, headings */
+  --zodiac: "Zodiac", serif; /* titles, headings */
   --firamono: "Fira Mono", monospace; /* code */
   --roboto: "Roboto", sans-serif; /* text */
 }
@@ -79,4 +80,18 @@
   font-weight: 400;
   src: url("/fonts/firamono-regular.woff2") format("woff2"),
     url("/fonts/firamono-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Zodiac";
+  font-weight: 660;
+  src: url("/fonts/Zodiak-Variable.woff2") format("woff2"),
+    url("/fonts/Zodiak-Variable.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Zodiac";
+  font-weight: 400;
+  src: url("/fonts/Zodiak-Variable.woff2") format("woff2"),
+    url("/fonts/Zodiak-Variable.woff") format("woff");
 }

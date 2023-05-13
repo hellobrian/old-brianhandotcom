@@ -5,20 +5,18 @@ interface Props {
 
 const { variant } = Astro.props;
 const underlineColor =
-  variant !== "navigation-menu" ? "var(--white)" : "var(--black)";
+  variant !== "navigation-menu" ? "var(--accent)" : "var(--very-muted)";
+const hoverUnderlineColor =
+  variant !== "navigation-menu" ? "var(--very-muted)" : "var(--accent)";
 ---
 
 <h1 data-variant={variant}><a href="/">Brian Han</a></h1>
 
-<style define:vars={{ underlineColor }}>
+<style define:vars={{ underlineColor, hoverUnderlineColor }}>
   h1 {
     font-weight: 400;
-    font-size: var(--step-4);
+    font-size: var(--step-2);
     font-family: var(--tanker);
-  }
-
-  h1[data-variant="header"] {
-    color: var(--local-color);
   }
 
   h1[data-variant="navigation-menu"] {
@@ -30,26 +28,10 @@ const underlineColor =
     text-decoration-color: var(--underlineColor);
     text-underline-offset: 4px;
     pointer-events: auto;
+    transition: text-decoration-color ease 200ms;
   }
 
   a:is(:hover, :focus) {
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--hoverUnderlineColor);
   }
 </style>
-<script>
-  const homeLink = document.querySelector(
-    "[data-variant='header']"
-  ) as HTMLElement;
-
-  const changeHomeLinkColor = () => {
-    const currentScrollPos = window.pageYOffset;
-    const isNearTop = currentScrollPos < 150;
-
-    homeLink.style.setProperty(
-      "--local-color",
-      isNearTop === true ? "var(--white)" : "var(--accent)"
-    );
-  };
-
-  window.addEventListener("scroll", changeHomeLinkColor);
-</script>

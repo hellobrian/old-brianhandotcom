@@ -7,6 +7,7 @@ interface GalleryProps {
 }
 
 export default function Gallery({ images }: GalleryProps) {
+  console.log(images);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [currentImgSrc, setCurrentImgSrc] = React.useState(
     images[currentIndex]

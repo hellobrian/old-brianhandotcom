@@ -65,10 +65,6 @@ select {
   isolation: isolate;
 }
 
-body {
-  font-family: sans-serif;
-}
-
 .button-reset {
   margin: 0;
   padding: 0;

@@ -1,0 +1,50 @@
+.blog > section {
+  display: grid;
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: var(--space-s) var(--space-l);
+  gap: var(--space-s);
+}
+
+.blog :is(p, a, ul, ol) {
+  font-family: var(--roboto);
+  color: var(--muted);
+}
+
+.blog :is(p, ul, ol) a {
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 0.1px;
+}
+
+.blog :is(h1, h2, h3),
+.blog :is(h1, h2, h3) > a {
+  font-family: var(--zodiac);
+  font-weight: 660;
+  color: var(--white);
+}
+
+.blog h1 > a {
+  color: var(--white);
+  font-size: var(--step-3);
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+.blog h2,
+.blog h2 > a {
+  font-size: var(--step-1);
+  color: var(--white);
+  font-weight: 660;
+  border-bottom: 4px solid var(--very-muted);
+  width: fit-content;
+}
+
+.blog h3,
+.blog h3 > a {
+  font-size: var(--step-0);
+  color: var(--white);
+  font-weight: 660;
+  border-bottom: 4px solid var(--very-muted);
+  width: fit-content;
+}

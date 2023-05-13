@@ -13,28 +13,12 @@ import NavBarButton from "./NavBarButton.astro";
 
 <style>
   header {
-    position: sticky;
+    /* position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 2; */
     padding: var(--space-l-xl) var(--space-s);
     transition: background-color ease 200ms;
     pointer-events: none;
-    background-color: var(--local-background-color);
+    background-color: transparent;
   }
 </style>
-
-<script>
-  const header = document.getElementById("header") as HTMLElement;
-
-  const changeHeaderBgColor = () => {
-    const currentScrollPos = window.pageYOffset;
-    const isNearTop = currentScrollPos < 150;
-
-    header.style.setProperty(
-      "--local-background-color",
-      isNearTop === true ? "var(--black)" : "transparent"
-    );
-  };
-
-  window.addEventListener("scroll", changeHeaderBgColor);
-</script>
