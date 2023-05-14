@@ -1,7 +1,44 @@
 ---
-import Header from "./Header.astro";
-import NavigationMenu from "./NavigationMenu.astro";
+import HomeLink from "./HomeLink.astro";
+import NavLink from "./NavLink.astro";
+
+const isBlogPathCurrent = Astro.url.pathname.includes("blog");
 ---
 
-<Header />
-<!-- <NavigationMenu /> -->
+<header>
+  <nav>
+    <HomeLink />
+    <ul>
+      <li>
+        <NavLink href="/blog" isCurrent={isBlogPathCurrent}>blog</NavLink>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    padding: var(--space-l-xl) var(--space-s);
+    transition: background-color ease 200ms;
+    pointer-events: none;
+    background-color: transparent;
+  }
+
+  nav {
+    display: flex;
+    gap: var(--space-s);
+    align-items: center;
+    max-width: 240ch;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 var(--space-s);
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-s);
+  }
+</style>
