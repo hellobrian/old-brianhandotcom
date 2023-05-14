@@ -1,6 +1,7 @@
 .blog > section {
-  display: grid;
-  max-width: 65ch;
+  display: flex;
+  flex-direction: column;
+  max-width: 90ch;
   margin: 0 auto;
   padding: var(--space-s) var(--space-l);
   gap: var(--space-s);
