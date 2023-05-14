@@ -1,0 +1,40 @@
+---
+interface Props {
+  variant: "home" | "blog";
+  href: string;
+  isCurrent: { "aria-current": "page" } | {};
+}
+
+const { variant, href, isCurrent } = Astro.props;
+const aria = { "aria-current": "page" };
+const ariaCurrentPage = isCurrent ? aria : {};
+const activeUnderlineColor =
+  variant === "blog" ? "var(--blue)" : "var(--accent)";
+---
+
+<a {href} {...ariaCurrentPage}><slot /></a>
+
+<style define:vars={{ activeUnderlineColor }}>
+  a {
+    color: var(--white);
+    font-family: var(--tanker);
+    font-size: var(--step-2);
+    font-weight: 400;
+    pointer-events: auto;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    transition: text-decoration-color ease 200ms;
+  }
+
+  a:hover {
+    text-decoration-color: var(--activeUnderlineColor);
+  }
+
+  a[aria-current="page"] {
+    text-decoration-color: var(--activeUnderlineColor);
+  }
+
+  a[aria-current="page"]:hover {
+    text-decoration-color: var(--very-muted);
+  }
+</style>

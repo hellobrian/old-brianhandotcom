@@ -1,37 +1,15 @@
 ---
-interface Props {
-  variant: "header" | "navigation-menu" | "accent";
-}
+import NavLink from "./NavLink.astro";
 
-const { variant } = Astro.props;
-const underlineColor =
-  variant !== "navigation-menu" ? "var(--accent)" : "var(--very-muted)";
-const hoverUnderlineColor =
-  variant !== "navigation-menu" ? "var(--very-muted)" : "var(--accent)";
+const isCurrent = Astro.url.pathname === "/";
 ---
 
-<h1 data-variant={variant}><a href="/">Brian Han</a></h1>
+<h1><NavLink variant="home" href="/" {isCurrent}>Brian Han</NavLink></h1>
 
-<style define:vars={{ underlineColor, hoverUnderlineColor }}>
+<style>
   h1 {
     font-weight: 400;
     font-size: var(--step-2);
     font-family: var(--tanker);
-  }
-
-  h1[data-variant="navigation-menu"] {
-    color: var(--black);
-  }
-
-  a {
-    color: currentColor;
-    text-decoration-color: var(--underlineColor);
-    text-underline-offset: 4px;
-    pointer-events: auto;
-    transition: text-decoration-color ease 200ms;
-  }
-
-  a:is(:hover, :focus) {
-    text-decoration-color: var(--hoverUnderlineColor);
   }
 </style>

@@ -13,19 +13,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             return (
               <li class="blog-list__list-item">
                 <div class="blog-list__link-container">
-                  <a href={blogPost.slug}>{blogPost.data.title}</a>
+                  <a href={`/blog/${blogPost.slug}`}>{blogPost.data.title}</a>
                   <time>{blogPost.data.pubDate.toLocaleDateString()}</time>
                 </div>
                 <span class="blog-list__description">
                   <p>{blogPost.data.description}</p>
                 </span>
-                <ul class="blog-list__tag-list">
-                  {blogPost.data.tags.map((tag) => (
-                    <li>
-                      <a href="">{tag}</a>
-                    </li>
-                  ))}
-                </ul>
               </li>
             );
           })
@@ -64,14 +57,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   .blog-list__link-container > a {
-    color: var(--muted);
-    font-family: var(--tanker);
+    color: var(--white);
+    font-family: var(--zodiac);
     font-size: var(--step-1);
-    text-decoration-color: var(--accent);
+    font-weight: 660;
+    text-decoration-color: var(--very-muted);
     text-underline-offset: 4px;
     width: fit-content;
   }
-
+  .blog-list__link-container > a:hover {
+    text-decoration-color: var(--accent);
+    transition: text-decoration-color ease 200ms;
+  }
   .blog-list__link-container > time {
     font-family: var(--roboto);
   }
@@ -79,27 +76,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .blog-list__description {
     display: flex;
     padding: 0 var(--space-s);
-  }
-
-  .blog-list__tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin: 0;
-    padding: 0 var(--space-s);
-  }
-
-  .blog-list__tag-list a {
-    color: var(--muted);
-    padding: 4px 16px;
-    border-top: 1px solid var(--very-muted);
-    border-bottom: 1px solid var(--very-muted);
-    border-left: 1px solid var(--very-muted);
-    text-decoration-color: var(--very-muted);
-    text-underline-offset: 2px;
-  }
-
-  .blog-list__tag-list li:last-child a {
-    border-right: 1px solid var(--very-muted);
+    font-family: var(--roboto);
   }
 </style>
