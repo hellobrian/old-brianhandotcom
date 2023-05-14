@@ -15,7 +15,7 @@
 .blog :is(p, ul, ol) a {
   text-decoration-color: var(--blue);
   text-underline-offset: 2px;
-  text-decoration-thickness: 0.1px;
+  text-decoration-thickness: 1px;
 }
 
 .blog :is(h1, h2, h3),
