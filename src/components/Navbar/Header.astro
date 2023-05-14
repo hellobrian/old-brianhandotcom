@@ -1,13 +1,14 @@
 ---
 import HomeMenuWrapper from "./HomeMenuWrapper.astro";
 import HomeLink from "./HomeLink.astro";
-import NavBarButton from "./NavBarButton.astro";
 ---
 
-<header id="header" data-is-scrolling-up="false" data-is-near-top="true">
+<header>
   <HomeMenuWrapper>
     <HomeLink variant={"header"} />
-    <NavBarButton variant="menu">menu</NavBarButton>
+    <ul>
+      <li><a href="/blog">blog</a></li>
+    </ul>
   </HomeMenuWrapper>
 </header>
 
@@ -17,5 +18,27 @@ import NavBarButton from "./NavBarButton.astro";
     transition: background-color ease 200ms;
     pointer-events: none;
     background-color: transparent;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-s);
+  }
+
+  a {
+    color: var(--white);
+    font-family: var(--tanker);
+    font-size: var(--step-2);
+    pointer-events: auto;
+    text-decoration-color: var(--very-muted);
+    text-underline-offset: 4px;
+    transition: text-decoration-color ease 200ms;
+  }
+
+  a:hover {
+    text-decoration-color: var(--accent);
   }
 </style>
