@@ -4,7 +4,7 @@ import NavLink from "./NavLink.astro";
 const isCurrent = Astro.url.pathname === "/";
 ---
 
-<h1><NavLink href="/" {isCurrent}>Brian Han</NavLink></h1>
+<h1><NavLink variant="home" href="/" {isCurrent}>Brian Han</NavLink></h1>
 
 <style>
   h1 {

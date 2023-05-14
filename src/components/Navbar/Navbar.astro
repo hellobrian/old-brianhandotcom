@@ -10,7 +10,9 @@ const isBlogPathCurrent = Astro.url.pathname.includes("blog");
     <HomeLink />
     <ul>
       <li>
-        <NavLink href="/blog" isCurrent={isBlogPathCurrent}>blog</NavLink>
+        <NavLink variant="blog" href="/blog" isCurrent={isBlogPathCurrent}>
+          blog
+        </NavLink>
       </li>
     </ul>
   </nav>

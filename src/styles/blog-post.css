@@ -13,7 +13,7 @@
 }
 
 .blog :is(p, ul, ol) a {
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--blue);
   text-underline-offset: 2px;
   text-decoration-thickness: 0.1px;
 }
@@ -38,7 +38,7 @@
   color: var(--white);
   font-weight: 660;
   width: fit-content;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--purple);
   text-underline-offset: 4px;
 }
 
@@ -48,7 +48,7 @@
   color: var(--white);
   font-weight: 660;
   width: fit-content;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--orange);
   text-underline-offset: 4px;
 }
 
@@ -72,12 +72,14 @@
 }
 
 .blog blockquote {
-  border: 4px solid var(--very-muted);
+  background-color: var(--orange);
   border-radius: 10px;
   padding: var(--space-s);
 }
 
 .blog blockquote p {
   color: var(--white);
+  color: var(--black);
+  font-weight: 700;
   font-family: var(--roboto);
 }

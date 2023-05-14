@@ -1,17 +1,20 @@
 ---
 interface Props {
+  variant: "home" | "blog";
   href: string;
   isCurrent: { "aria-current": "page" } | {};
 }
 
-const ariaCurrent = { "aria-current": "page" };
-const { href, isCurrent } = Astro.props;
-const isCurrentProps = isCurrent ? ariaCurrent : {};
+const { variant, href, isCurrent } = Astro.props;
+const aria = { "aria-current": "page" };
+const ariaCurrentPage = isCurrent ? aria : {};
+const activeUnderlineColor =
+  variant === "blog" ? "var(--blue)" : "var(--accent)";
 ---
 
-<a {href} {...isCurrentProps}><slot /></a>
+<a {href} {...ariaCurrentPage}><slot /></a>
 
-<style>
+<style define:vars={{ activeUnderlineColor }}>
   a {
     color: var(--white);
     font-family: var(--tanker);
@@ -24,11 +27,11 @@ const isCurrentProps = isCurrent ? ariaCurrent : {};
   }
 
   a:hover {
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--activeUnderlineColor);
   }
 
   a[aria-current="page"] {
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--activeUnderlineColor);
   }
 
   a[aria-current="page"]:hover {

@@ -9,6 +9,9 @@
   --gray: #30302b;
   --lime: #e6ffb9;
   --gold: #ffc700;
+  --purple: #c58fff; /* https://sequoiatheme.com/sequoia-color-palette/ */
+  --orange: #ffbb88; /* https://sequoiatheme.com/sequoia-color-palette/ */
+  --blue: #8eb6f5; /* https://sequoiatheme.com/sequoia-color-palette/ */
   --accent: var(--gold);
   /* font-size */
   --step--2: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);
