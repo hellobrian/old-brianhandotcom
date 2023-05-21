@@ -1,0 +1,22 @@
+/* Dots */
+.dots {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots > button {
+  height: 14px;
+  width: 14px;
+  border-radius: 10px;
+  background-color: var(--very-muted);
+}
+
+.dots > button:active {
+  background: var(--accent);
+}
+
+.dots > button:focus {
+  outline: 2px solid var(--white);
+}
