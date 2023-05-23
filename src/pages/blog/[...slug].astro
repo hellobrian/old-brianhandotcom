@@ -40,3 +40,12 @@ import "../../styles/blog-post.css";
     </section>
   </main>
 </BaseLayout>
+<script>
+  const images: Element[] = [...document.querySelectorAll(".image")];
+  images.forEach((image) =>
+    image.addEventListener("click", (event) => {
+      const image = event.target as HTMLImageElement;
+      image.classList.toggle("full");
+    })
+  );
+</script>
