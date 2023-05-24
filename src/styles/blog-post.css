@@ -1,42 +1,18 @@
 .blog > section {
-  /* display: flex;
-  flex-direction: column;
-  max-width: 90ch;
-  margin: 0 auto;
-  padding: var(--space-s) var(--space-l);
-  gap: var(--space-s); */
-
   display: grid;
   grid-template-columns: 1fr 90ch 1fr;
-  gap: var(--space-s);
-}
-
-.blog .image.full {
-  grid-column-start: span 3;
-  width: 100%;
-  padding: 0 var(--space-l);
-  transition: all ease 200ms;
-}
-
-.blog .image.full:hover {
-  cursor: zoom-out;
-}
-.blog .image:not(.full):hover {
-  cursor: zoom-in;
-}
-
-@media (width <= 90ch) {
-  .blog > section {
-    grid-template-columns: 1fr;
-  }
-
-  .blog .image.full {
-    padding: 0 var(--space-s);
-  }
+  row-gap: var(--space-s);
 }
 
 .blog > section > * {
   grid-column-start: 2;
+}
+
+@media (width < 835px) {
+  .blog > section {
+    grid-template-columns: 1fr;
+    padding: 0 var(--space-s);
+  }
 }
 
 .blog :is(p, a, ul, ol) {

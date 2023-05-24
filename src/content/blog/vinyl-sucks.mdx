@@ -4,12 +4,13 @@ description: something about missing physical music because streaming was not so
 pubDate: "05/23/2023"
 ---
 
+import Photo from "../../components/Photo/Photo.tsx";
 import wideShot from "/images/blog/vinyl-sucks/wide.webp";
 import cdPlayer from "/images/blog/vinyl-sucks/cd-player.webp";
 import receiver from "/images/blog/vinyl-sucks/receiver.webp";
 import turntable from "/images/blog/vinyl-sucks/turntable.webp";
 
-<img class="image" src={wideShot} alt="music setup" />
-<img class="image" src={turntable} alt="turntable" />
-<img class="image" src={cdPlayer} alt="cd player" />
-<img class="image" src={receiver} alt="receiver" />
+<Photo client:visible src={wideShot} alt="music setup" />
+<Photo client:visible src={turntable} alt="turntable" />
+<Photo client:visible src={cdPlayer} alt="cd player" />
+<Photo client:visible src={receiver} alt="receiver" />

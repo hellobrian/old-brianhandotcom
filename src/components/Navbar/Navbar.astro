@@ -33,7 +33,13 @@ const isBlogPathCurrent = Astro.url.pathname.includes("blog");
     max-width: 240ch;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 0 var(--space-s);
+    padding: 0 var(--space-xl);
+  }
+
+  @media (width < 835px) {
+    nav {
+      padding: 0 var(--space-s);
+    }
   }
 
   ul {

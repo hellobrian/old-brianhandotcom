@@ -1,0 +1,22 @@
+.Photo {
+  grid-column-start: 2;
+}
+
+@media (width < 835px) {
+  .Photo {
+    pointer-events: none;
+  }
+}
+
+.Photo[data-zoom="true"] {
+  grid-column-start: 1;
+  grid-column: span 3;
+}
+
+.Photo[data-zoom="false"]:hover {
+  cursor: zoom-in;
+}
+
+.Photo[data-zoom="true"]:hover {
+  cursor: zoom-out;
+}
