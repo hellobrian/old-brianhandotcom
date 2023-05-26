@@ -9,8 +9,8 @@
 }
 
 .Photo[data-zoom="true"] {
-  grid-column-start: 1;
-  grid-column: span 3;
+  grid-column: 1/4;
+  width: 100%;
 }
 
 .Photo[data-zoom="false"]:hover {
