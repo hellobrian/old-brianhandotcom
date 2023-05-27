@@ -1,3 +1,4 @@
+/* layout */
 .blog > section {
   display: grid;
   grid-template-columns: 1fr 90ch 1fr;
@@ -15,6 +16,7 @@
   }
 }
 
+/* text and lists */
 .blog :is(p, a, ul, ol) {
   font-family: var(--roboto);
   color: var(--muted);
@@ -26,6 +28,16 @@
   text-decoration-thickness: 1px;
 }
 
+.blog li::marker {
+  color: var(--accent);
+}
+
+.blog .description {
+  font-size: var(--step-1);
+  color: var(--white);
+}
+
+/* headings */
 .blog :is(h1, h2, h3),
 .blog :is(h1, h2, h3) > a {
   font-family: var(--zodiac);
@@ -58,38 +70,4 @@
   width: fit-content;
   text-decoration-color: var(--orange);
   text-underline-offset: 4px;
-}
-
-.blog li::marker {
-  color: var(--accent);
-}
-
-.blog table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-  border-collapse: collapse;
-  color: var(--white);
-  font-family: var(--roboto);
-  max-width: fit-content;
-}
-
-.blog :is(th, td) {
-  border: 1px solid var(--muted);
-  padding: var(--space-s);
-  text-align: left;
-}
-
-.blog blockquote {
-  background-color: var(--orange);
-  border-radius: 10px;
-  padding: var(--space-s);
-  border: 4px solid var(--orange-dark);
-}
-
-.blog blockquote p {
-  color: var(--white);
-  color: var(--black);
-  font-weight: 700;
-  font-family: var(--roboto);
 }

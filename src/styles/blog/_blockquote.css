@@ -1,0 +1,13 @@
+.blog blockquote {
+  background-color: var(--orange);
+  border-radius: 10px;
+  padding: var(--space-s);
+  border: 4px solid var(--orange-dark);
+}
+
+.blog blockquote p {
+  color: var(--white);
+  color: var(--black);
+  font-weight: 700;
+  font-family: var(--roboto);
+}
