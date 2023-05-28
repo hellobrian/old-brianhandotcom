@@ -10,7 +10,13 @@ export default function Carousel({ images }: CarouselProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   return (
-    <div style={{ display: "grid", gap: "var(--space-s)" }}>
+    <div
+      data-testid="Carousel"
+      style={{
+        display: "grid",
+        gap: "var(--space-s)",
+      }}
+    >
       <ImageList activeIndex={activeIndex} images={images} />
       <Dots
         activeIndex={activeIndex}

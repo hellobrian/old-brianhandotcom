@@ -8,7 +8,7 @@ interface ImageListProps {
 
 export default function ImageList({ images, activeIndex }: ImageListProps) {
   return (
-    <ul className="ImageList">
+    <div className="ImageList">
       {images.map((image, index) => (
         <ImageListItem
           key={image}
@@ -17,7 +17,7 @@ export default function ImageList({ images, activeIndex }: ImageListProps) {
           index={index}
         />
       ))}
-    </ul>
+    </div>
   );
 }
 
@@ -43,12 +43,12 @@ const ImageListItem = ({ image, activeIndex, index }: ImageListItemProps) => {
   }, [isActive]);
 
   return (
-    <li
+    <div
       className="ImageListItem"
       data-active-index={activeIndex === index}
       ref={ref}
     >
       <img src={image} alt="" />
-    </li>
+    </div>
   );
 };

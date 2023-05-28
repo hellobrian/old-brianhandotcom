@@ -17,6 +17,11 @@
 }
 
 /* text and lists */
+.blog :is(ul, ol) {
+  display: grid;
+  row-gap: var(--space-xs);
+}
+
 .blog :is(p, a, ul, ol) {
   font-family: var(--roboto);
   color: var(--muted);
@@ -30,11 +35,6 @@
 
 .blog li::marker {
   color: var(--accent);
-}
-
-.blog .description {
-  font-size: var(--step-1);
-  color: var(--white);
 }
 
 /* headings */
@@ -70,4 +70,18 @@
   width: fit-content;
   text-decoration-color: var(--orange);
   text-underline-offset: 4px;
+}
+
+.blog .description {
+  font-style: italic;
+}
+
+/* divider */
+
+.blog hr {
+  height: 4px;
+  background-color: var(--accent);
+  border: none;
+  width: 50%;
+  margin: var(--space-s) auto;
 }
