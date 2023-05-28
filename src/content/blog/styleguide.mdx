@@ -1,27 +1,33 @@
 ---
-title: First Post (Styleguide)
-description: first post where I'm figuring out how blog styles should look.
+title: Styleguide
+description: This is a styleguide for this website's blog. It's messy. I'm very sorry.
 pubDate: "05/13/2023"
+draft: true
 ---
 
 import Gallery from "../../components/Gallery/Gallery.tsx";
 import Carousel from "../../components/Carousel/Carousel.tsx";
+import Photo from "../../components/Photo/Photo.tsx";
+import turntable from "/images/blog/vinyl-sucks/turntable.webp";
 
 Ipsum ea occaecat exercitation et magna [Lorem fugiat veniam fugiat id id](#). Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 
 > this is where things need to be called out because hello
 
 ## [How to Get the Master Sword in Tears of the Kingdom as Soon as Humanly Possible](#how-to-get-the-master-sword-in-tears-of-the-kingdom-as-soon-as-humanly-possible-1)
-<Gallery
-  images={[
-    "/images/keyboards/design03/pbt-notion-back-001.webp",
-    "/images/keyboards/design03/pbt-notion-back-002.webp",
-    "/images/keyboards/design03/pbt-notion-001.webp",
-    "/images/keyboards/design03/pbt-notion-002.webp",
-    "/images/keyboards/design03/pbt-notion-003.webp",
-  ]}
-  client:load
-/>
+
+<div>
+  <Gallery
+    images={[
+      "/images/keyboards/design03/pbt-notion-back-001.webp",
+      "/images/keyboards/design03/pbt-notion-back-002.webp",
+      "/images/keyboards/design03/pbt-notion-001.webp",
+      "/images/keyboards/design03/pbt-notion-002.webp",
+      "/images/keyboards/design03/pbt-notion-003.webp",
+    ]}
+    client:load
+  />
+</div>
 
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 
@@ -31,18 +37,18 @@ Bing Bong Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id 
 
 ### [Tear #2 - An Unfamiliar World](#tear-2---an-unfamiliar-world)
 
-<Carousel
-  images={[
-    "/images/keyboards/design03/pbt-notion-back-001.webp",
-    "/images/keyboards/design03/pbt-notion-back-002.webp",
-    "/images/keyboards/design03/pbt-notion-001.webp",
-    "/images/keyboards/design03/pbt-notion-002.webp",
-    "/images/keyboards/design03/pbt-notion-003.webp",
-
-  ]}
-  client:visible
-/>
-
+<div>
+  <Carousel
+    images={[
+      "/images/keyboards/design03/pbt-notion-back-001.webp",
+      "/images/keyboards/design03/pbt-notion-back-002.webp",
+      "/images/keyboards/design03/pbt-notion-001.webp",
+      "/images/keyboards/design03/pbt-notion-002.webp",
+      "/images/keyboards/design03/pbt-notion-003.webp",
+    ]}
+    client:visible
+  />
+</div>
 
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 
@@ -69,21 +75,21 @@ Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis c
 
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 
+Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 
-
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
-
-
-Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
-
 
 ## [another one](#another-one)
 
+<Photo src={turntable} alt="turntable" client:visible />
+
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
+
+---
 
 Ipsum ea occaecat exercitation et magna Lorem fugiat veniam fugiat id id. Quis cillum duis qui elit laboris do dolore reprehenderit nostrud aliquip deserunt. Amet aliqua laborum consequat non cillum ut occaecat pariatur aute esse qui sit duis. Non eiusmod adipisicing elit sit deserunt veniam ipsum elit anim duis aute.
 

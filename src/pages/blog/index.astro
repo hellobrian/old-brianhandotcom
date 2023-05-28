@@ -9,19 +9,21 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section>
       <ul class="blog-list">
         {
-          blog.map((blogPost) => {
-            return (
-              <li class="blog-list__list-item">
-                <div class="blog-list__link-container">
-                  <a href={`/blog/${blogPost.slug}`}>{blogPost.data.title}</a>
-                  <time>{blogPost.data.pubDate.toLocaleDateString()}</time>
-                </div>
-                <span class="blog-list__description">
-                  <p>{blogPost.data.description}</p>
-                </span>
-              </li>
-            );
-          })
+          blog
+            .filter((blog) => !blog.data.draft)
+            .map((blogPost) => {
+              return (
+                <li class="blog-list__list-item">
+                  <div class="blog-list__link-container">
+                    <time>{blogPost.data.pubDate.toLocaleDateString()}</time>
+                    <a href={`/blog/${blogPost.slug}`}>{blogPost.data.title}</a>
+                  </div>
+                  <span class="blog-list__description">
+                    <p>{blogPost.data.description}</p>
+                  </span>
+                </li>
+              );
+            })
         }
       </ul>
     </section>
@@ -31,14 +33,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <style>
   section {
     display: grid;
-    max-width: 65ch;
+    max-width: 90ch;
     margin: 0 auto;
-    padding: var(--space-s) var(--space-l);
+    padding: var(--space-s);
   }
 
   .blog-list {
     margin: 0;
     padding: 0;
+    display: grid;
+    gap: var(--space-s);
   }
 
   .blog-list__list-item {
@@ -53,15 +57,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .blog-list__link-container {
     display: flex;
     flex-direction: column;
-    padding: 0 var(--space-s);
   }
 
   .blog-list__link-container > a {
     color: var(--white);
     font-family: var(--zodiac);
-    font-size: var(--step-1);
+    font-size: var(--step-2);
     font-weight: 660;
-    text-decoration-color: var(--very-muted);
+    text-decoration-color: var(--purple);
     text-underline-offset: 4px;
     width: fit-content;
   }
@@ -75,7 +78,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   .blog-list__description {
     display: flex;
-    padding: 0 var(--space-s);
     font-family: var(--roboto);
   }
 </style>

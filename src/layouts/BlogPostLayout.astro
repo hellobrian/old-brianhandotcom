@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { blogPost } = Astro.props;
+import "../styles/blog/_blockquote.css";
+import "../styles/blog/_table.css";
+import "../styles/blog/blog.css";
+---
+
+<BaseLayout>
+  <main class="blog">
+    <section>
+      <time>
+        {blogPost.data.pubDate.toLocaleDateString()}
+      </time>
+      <h1>
+        <a href={`#${blogPost.slug}`}>
+          {blogPost.data.title}
+        </a>
+      </h1>
+      <p class="description">{blogPost.data.description}</p>
+      <slot />
+    </section>
+  </main>
+</BaseLayout>

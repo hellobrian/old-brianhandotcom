@@ -4,9 +4,17 @@ const blogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    tags: z.enum([
-      'keyboards', 'keycaps', 'photos', 'react', 'astro', 'personal', 'plants'
-    ]).optional(),
+    tags: z
+      .enum([
+        "keyboards",
+        "keycaps",
+        "photos",
+        "react",
+        "astro",
+        "personal",
+        "plants",
+      ])
+      .optional(),
     // Transform string to Date object
     pubDate: z
       .string()
@@ -15,7 +23,8 @@ const blogCollection = defineCollection({
     updatedDate: z
       .string()
       .optional()
-      .transform((str) => (str ? new Date(str) : undefined))
+      .transform((str) => (str ? new Date(str) : undefined)),
+    draft: z.boolean().default(false),
   }),
 });
 

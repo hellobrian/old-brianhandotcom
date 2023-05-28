@@ -1,10 +1,25 @@
+/* layout */
 .blog > section {
-  display: flex;
-  flex-direction: column;
-  max-width: 90ch;
-  margin: 0 auto;
-  padding: var(--space-s) var(--space-l);
-  gap: var(--space-s);
+  display: grid;
+  grid-template-columns: 1fr 90ch 1fr;
+  row-gap: var(--space-s);
+}
+
+.blog > section > * {
+  grid-column-start: 2;
+}
+
+@media (width < 835px) {
+  .blog > section {
+    grid-template-columns: 1fr;
+    padding: 0 var(--space-s);
+  }
+}
+
+/* text and lists */
+.blog :is(ul, ol) {
+  display: grid;
+  row-gap: var(--space-xs);
 }
 
 .blog :is(p, a, ul, ol) {
@@ -18,6 +33,11 @@
   text-decoration-thickness: 1px;
 }
 
+.blog li::marker {
+  color: var(--accent);
+}
+
+/* headings */
 .blog :is(h1, h2, h3),
 .blog :is(h1, h2, h3) > a {
   font-family: var(--zodiac);
@@ -52,35 +72,20 @@
   text-underline-offset: 4px;
 }
 
-.blog li::marker {
-  color: var(--accent);
+.blog .description {
+  font-style: italic;
 }
 
-.blog table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-  border-collapse: collapse;
-  color: var(--white);
-  font-family: var(--roboto);
-  max-width: fit-content;
+/* misc: divider, time */
+
+.blog hr {
+  height: 4px;
+  background-color: var(--accent);
+  border: none;
+  width: 50%;
+  margin: var(--space-s) auto;
 }
 
-.blog :is(th, td) {
-  border: 1px solid var(--muted);
-  padding: var(--space-s);
-  text-align: left;
-}
-
-.blog blockquote {
-  background-color: var(--orange);
-  border-radius: 10px;
-  padding: var(--space-s);
-}
-
-.blog blockquote p {
-  color: var(--white);
-  color: var(--black);
-  font-weight: 700;
+.blog time {
   font-family: var(--roboto);
 }
