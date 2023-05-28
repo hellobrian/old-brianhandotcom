@@ -9,19 +9,21 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <section>
       <ul class="blog-list">
         {
-          blog.map((blogPost) => {
-            return (
-              <li class="blog-list__list-item">
-                <div class="blog-list__link-container">
-                  <a href={`/blog/${blogPost.slug}`}>{blogPost.data.title}</a>
-                  <time>{blogPost.data.pubDate.toLocaleDateString()}</time>
-                </div>
-                <span class="blog-list__description">
-                  <p>{blogPost.data.description}</p>
-                </span>
-              </li>
-            );
-          })
+          blog
+            .filter((blog) => !blog.data.draft)
+            .map((blogPost) => {
+              return (
+                <li class="blog-list__list-item">
+                  <div class="blog-list__link-container">
+                    <a href={`/blog/${blogPost.slug}`}>{blogPost.data.title}</a>
+                    <time>{blogPost.data.pubDate.toLocaleDateString()}</time>
+                  </div>
+                  <span class="blog-list__description">
+                    <p>{blogPost.data.description}</p>
+                  </span>
+                </li>
+              );
+            })
         }
       </ul>
     </section>
