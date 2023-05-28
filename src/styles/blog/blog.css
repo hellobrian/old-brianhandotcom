@@ -79,10 +79,11 @@
 /* misc: divider, time */
 
 .blog hr {
-  height: 4px;
-  background-color: var(--accent);
+  height: 14px;
+  width: 14px;
+  background-color: var(--very-muted);
   border: none;
-  width: 50%;
+  border-radius: 100%;
   margin: var(--space-s) auto;
 }
 
