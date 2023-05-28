@@ -111,7 +111,7 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
     transition: opacity ease 200ms;
   }
 
-  img:hover ~ p {
+  a:hover ~ p {
     opacity: 0;
   }
 

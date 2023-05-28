@@ -48,7 +48,9 @@ const ImageListItem = ({ image, activeIndex, index }: ImageListItemProps) => {
       data-active-index={activeIndex === index}
       ref={ref}
     >
-      <img src={image} alt="" />
+      <a href={image}>
+        <img src={image} alt="" />
+      </a>
     </div>
   );
 };
