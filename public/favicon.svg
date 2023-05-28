@@ -1,9 +1,7 @@
-<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="25" cy="25" r="16" />
-  <style>
-    circle { fill: #ffc700; }
-    @media (prefers-color-scheme: dark) {
-    circle { fill: #ffc700; }
-    }
-  </style>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <linearGradient x1="0" y1="0" x2="100%" y2="100%" id="gradient">
+    <stop stop-color="#8eb6f5" offset="2%" />
+    <stop stop-color="#c58fff" offset="100%" />
+  </linearGradient>
+  <circle fill="url(#gradient)" cx="64" cy="64" r="64" />
 </svg>

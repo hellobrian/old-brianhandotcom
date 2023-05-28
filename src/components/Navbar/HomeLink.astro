@@ -4,12 +4,34 @@ import NavLink from "./NavLink.astro";
 const isCurrent = Astro.url.pathname === "/";
 ---
 
-<h1><NavLink variant="home" href="/" {isCurrent}>Brian Han</NavLink></h1>
+<h1>
+  <svg
+    width="128"
+    height="128"
+    viewBox="0 0 128 128"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <linearGradient x1="0" y1="0" x2="100%" y2="100%" id="gradient">
+      <stop stop-color="var(--blue)" offset="2%"></stop>
+      <stop stop-color="var(--purple)" offset="100%"></stop>
+    </linearGradient>
+    <circle fill="url(#gradient)" cx="64" cy="64" r="48"></circle>
+  </svg>
+  <NavLink variant="home" href="/" {isCurrent}>Brian Han</NavLink>
+</h1>
 
 <style>
   h1 {
+    display: inline-flex;
+    gap: var(--space-3xs);
+    align-items: center;
     font-weight: 400;
     font-size: var(--step-2);
     font-family: var(--tanker);
+  }
+
+  h1 > svg {
+    width: var(--step-1);
+    height: var(--step-1);
   }
 </style>
