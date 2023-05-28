@@ -77,14 +77,14 @@
 }
 
 /* misc: divider, time */
-
 .blog hr {
-  height: 14px;
-  width: 14px;
-  background-color: var(--very-muted);
+  width: 0;
+  height: 0;
   border: none;
-  border-radius: 100%;
-  margin: var(--space-s) auto;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--very-muted);
+  margin: var(--space-l) auto;
 }
 
 .blog time {
