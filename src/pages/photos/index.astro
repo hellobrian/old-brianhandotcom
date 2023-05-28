@@ -6,22 +6,16 @@ const featuredPhotos = await Astro.glob(
   "/public/images/photos-page/featured/*.webp"
 ).then((files) =>
   files.map((file) => {
-    const src = file.default.split("/public")[1];
-    const filename = file.default
-      .split("/public/images/photos-page/featured/")[1]
-      .split(".webp")[0];
-    return { src, filename };
+    const filename = file.default.split("__")[1];
+    return { src: file.default, filename };
   })
 );
 
 const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   (files) =>
     files.map((file) => {
-      const src = file.default.split("/public")[1];
-      const filename = file.default
-        .split("/public/images/photos-page/")[1]
-        .split(".webp")[0];
-      return { src, filename };
+      const filename = file.default.split("__")[1];
+      return { src: file.default, filename };
     })
 );
 ---
