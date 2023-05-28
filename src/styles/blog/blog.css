@@ -1,4 +1,8 @@
 /* layout */
+.blog {
+  padding-bottom: 170px;
+}
+
 .blog > section {
   display: grid;
   grid-template-columns: 1fr 90ch 1fr;
@@ -74,6 +78,7 @@
 
 .blog .description {
   font-style: italic;
+  padding: var(--space-l) 0;
 }
 
 /* misc: divider, time */
