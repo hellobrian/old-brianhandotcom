@@ -3,6 +3,7 @@ import HomeLink from "./HomeLink.astro";
 import NavLink from "./NavLink.astro";
 
 const isBlogPathCurrent = Astro.url.pathname.includes("blog");
+const isPhotosCurrent = Astro.url.pathname.includes("photos");
 ---
 
 <header>
@@ -12,6 +13,11 @@ const isBlogPathCurrent = Astro.url.pathname.includes("blog");
       <li>
         <NavLink variant="blog" href="/blog" isCurrent={isBlogPathCurrent}>
           blog
+        </NavLink>
+      </li>
+      <li>
+        <NavLink variant="other" href="/photos" isCurrent={isPhotosCurrent}>
+          photos
         </NavLink>
       </li>
     </ul>

@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
+  (files) =>
+    files.map((file) => {
+      const src = file.default.split("/public")[1];
+      const filename = file.default
+        .split("/public/images/photos-page/")[1]
+        .split(".webp")[0];
+      return { src, filename };
+    })
+);
+---
+
+<BaseLayout>
+  <main class="photo-page">
+    {
+      photos.map((photo) => (
+        <div>
+          <img src={photo.src} alt="photo" />
+          <p>{photo.filename}</p>
+        </div>
+      ))
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .photo-page {
+    column-count: 4;
+    padding: 0 var(--space-s);
+
+    @media (width <= 1600px) {
+      column-count: 3;
+    }
+
+    @media (width <= 1280px) {
+      column-count: 2;
+    }
+
+    @media (width <= 768px) {
+      column-count: 1;
+    }
+  }
+
+  div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    background: black;
+    padding: 8px;
+    height: fit-content;
+    margin-bottom: var(--space-s);
+    page-break-inside: avoid;
+  }
+
+  img {
+    border-radius: 14px;
+    transition: opacity ease 200ms;
+  }
+
+  img:hover {
+    opacity: 0.5;
+  }
+
+  p {
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--zodiac);
+    text-align: center;
+    color: var(--accent);
+  }
+
+  img:hover ~ p {
+    opacity: 1;
+  }
+</style>
