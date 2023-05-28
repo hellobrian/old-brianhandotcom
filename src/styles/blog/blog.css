@@ -76,7 +76,7 @@
   font-style: italic;
 }
 
-/* divider */
+/* misc: divider, time */
 
 .blog hr {
   height: 4px;
@@ -84,4 +84,8 @@
   border: none;
   width: 50%;
   margin: var(--space-s) auto;
+}
+
+.blog time {
+  font-family: var(--roboto);
 }

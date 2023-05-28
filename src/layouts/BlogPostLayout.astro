@@ -10,6 +10,9 @@ import "../styles/blog/blog.css";
 <BaseLayout>
   <main class="blog">
     <section>
+      <time>
+        {blogPost.data.pubDate.toLocaleDateString()}
+      </time>
       <h1>
         <a href={`#${blogPost.slug}`}>
           {blogPost.data.title}
