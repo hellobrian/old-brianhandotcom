@@ -37,11 +37,13 @@ export default function Gallery({ images }: GalleryProps) {
     >
       <Controls images={images} increment={increment} decrement={decrement}>
         {/* CurrentImage */}
-        <img
-          src={currentImgSrc}
-          alt=""
-          style={{ width: "100%", borderRadius: "10px", columnSpan: "all" }}
-        />
+        <a href={currentImgSrc}>
+          <img
+            src={currentImgSrc}
+            alt=""
+            style={{ width: "100%", borderRadius: "10px", columnSpan: "all" }}
+          />
+        </a>
       </Controls>
 
       {/* ThumbnailGrid */}

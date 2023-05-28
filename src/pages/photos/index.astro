@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Carousel from "../../components/Carousel/Carousel";
+
+const featuredPhotos = await Astro.glob(
+  "/public/images/photos-page/featured/*.webp"
+).then((files) =>
+  files.map((file) => {
+    const filename = file.default.split("__")[1];
+    return { src: file.default, filename };
+  })
+);
+
+const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
+  (files) =>
+    files.map((file) => {
+      const filename = file.default.split("__")[1];
+      return { src: file.default, filename };
+    })
+);
+---
+
+<BaseLayout>
+  <main>
+    <h2>Featured</h2>
+    <section class="featured-photos">
+      <Carousel
+        withDots={false}
+        images={[...featuredPhotos.map((photo) => photo.src)]}
+      />
+    </section>
+    <hr />
+    <h2>Photos</h2>
+    <section class="photos">
+      {
+        photos.map((photo) => {
+          return (
+            <div>
+              <a href={photo.src}>
+                <img src={photo.src} alt="photo" />
+              </a>
+              <p>{photo.filename}</p>
+            </div>
+          );
+        })
+      }
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    display: grid;
+    gap: var(--space-s);
+  }
+  .featured-photos {
+    padding: var(--space-s);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .photos {
+    column-count: 4;
+    padding: 0 var(--space-s);
+
+    @media (width <= 1600px) {
+      column-count: 3;
+    }
+
+    @media (width <= 1280px) {
+      column-count: 2;
+    }
+
+    @media (width <= 768px) {
+      column-count: 1;
+    }
+  }
+
+  div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    background: black;
+    padding: 8px;
+    height: fit-content;
+    margin-bottom: var(--space-s);
+    page-break-inside: avoid;
+  }
+
+  img {
+    border-radius: 14px;
+    transition: opacity ease 200ms;
+    opacity: 0.8;
+  }
+
+  img:hover {
+    opacity: 1;
+  }
+
+  p {
+    pointer-events: none;
+    opacity: 1;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--zodiac);
+    text-align: center;
+    color: var(--accent);
+    font-weight: 660;
+    transition: opacity ease 200ms;
+  }
+
+  a:hover ~ p {
+    opacity: 0;
+  }
+
+  h2 {
+    font-family: var(--zodiac);
+    font-size: var(--step-3);
+    color: var(--white);
+    font-weight: 660;
+    width: fit-content;
+    margin: 0 auto;
+    text-decoration-color: var(--purple);
+    text-underline-offset: 4px;
+  }
+
+  hr {
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+    background-color: var(--very-muted);
+    border: none;
+    margin: var(--space-s) auto;
+  }
+</style>
