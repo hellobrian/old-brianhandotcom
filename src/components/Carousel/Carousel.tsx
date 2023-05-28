@@ -4,9 +4,10 @@ import Dots from "./Dots";
 
 interface CarouselProps {
   images: string[];
+  withDots?: boolean;
 }
 
-export default function Carousel({ images }: CarouselProps) {
+export default function Carousel({ images, withDots = true }: CarouselProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   return (
@@ -18,11 +19,13 @@ export default function Carousel({ images }: CarouselProps) {
       }}
     >
       <ImageList activeIndex={activeIndex} images={images} />
-      <Dots
-        activeIndex={activeIndex}
-        images={images}
-        setActiveIndex={setActiveIndex}
-      />
+      {withDots && (
+        <Dots
+          activeIndex={activeIndex}
+          images={images}
+          setActiveIndex={setActiveIndex}
+        />
+      )}
     </div>
   );
 }

@@ -1,5 +1,18 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Carousel from "../../components/Carousel/Carousel";
+
+const featuredPhotos = await Astro.glob(
+  "/public/images/photos-page/featured/*.webp"
+).then((files) =>
+  files.map((file) => {
+    const src = file.default.split("/public")[1];
+    const filename = file.default
+      .split("/public/images/photos-page/featured/")[1]
+      .split(".webp")[0];
+    return { src, filename };
+  })
+);
 
 const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   (files) =>
@@ -14,20 +27,42 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
 ---
 
 <BaseLayout>
-  <main class="photo-page">
-    {
-      photos.map((photo) => (
-        <div>
-          <img src={photo.src} alt="photo" />
-          <p>{photo.filename}</p>
-        </div>
-      ))
-    }
+  <main>
+    <h2>Featured</h2>
+    <section class="featured-photos">
+      <Carousel
+        withDots={false}
+        images={[...featuredPhotos.map((photo) => photo.src)]}
+      />
+    </section>
+    <hr />
+    <h2>Photos</h2>
+    <section class="photos">
+      {
+        photos.map((photo, index) => {
+          return (
+            <div>
+              <img src={photo.src} alt="photo" />
+              <p>{photo.filename}</p>
+            </div>
+          );
+        })
+      }
+    </section>
   </main>
 </BaseLayout>
 
 <style>
-  .photo-page {
+  main {
+    display: grid;
+    gap: var(--space-s);
+  }
+  .featured-photos {
+    padding: var(--space-s);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .photos {
     column-count: 4;
     padding: 0 var(--space-s);
 
@@ -75,9 +110,30 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
     font-family: var(--zodiac);
     text-align: center;
     color: var(--accent);
+    font-weight: 660;
   }
 
   img:hover ~ p {
     opacity: 1;
+  }
+
+  h2 {
+    font-family: var(--zodiac);
+    font-size: var(--step-3);
+    color: var(--white);
+    font-weight: 660;
+    width: fit-content;
+    margin: 0 auto;
+    text-decoration-color: var(--purple);
+    text-underline-offset: 4px;
+  }
+
+  hr {
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+    background-color: var(--very-muted);
+    border: none;
+    margin: var(--space-s) auto;
   }
 </style>
