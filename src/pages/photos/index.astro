@@ -33,10 +33,12 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
     <h2>Photos</h2>
     <section class="photos">
       {
-        photos.map((photo, index) => {
+        photos.map((photo) => {
           return (
             <div>
-              <img src={photo.src} alt="photo" />
+              <a href={photo.src}>
+                <img src={photo.src} alt="photo" />
+              </a>
               <p>{photo.filename}</p>
             </div>
           );
