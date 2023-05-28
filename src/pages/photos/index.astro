@@ -109,6 +109,7 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
     color: var(--accent);
     font-weight: 660;
     transition: opacity ease 200ms;
+    min-width: 300px;
   }
 
   a:hover ~ p {
