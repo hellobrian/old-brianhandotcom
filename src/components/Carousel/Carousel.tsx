@@ -7,7 +7,7 @@ interface CarouselProps {
   withDots?: boolean;
 }
 
-export default function Carousel({ images, withDots = true }: CarouselProps) {
+export default function Carousel({ images, withDots = false }: CarouselProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   return (

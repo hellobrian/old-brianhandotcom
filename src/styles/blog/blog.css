@@ -1,4 +1,8 @@
 /* layout */
+.blog {
+  padding-bottom: 170px;
+}
+
 .blog > section {
   display: grid;
   grid-template-columns: 1fr 90ch 1fr;
@@ -74,16 +78,18 @@
 
 .blog .description {
   font-style: italic;
+  padding: var(--space-l) 0;
 }
 
 /* misc: divider, time */
-
 .blog hr {
-  height: 4px;
-  background-color: var(--accent);
+  width: 0;
+  height: 0;
   border: none;
-  width: 50%;
-  margin: var(--space-s) auto;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--very-muted);
+  margin: var(--space-l) auto;
 }
 
 .blog time {

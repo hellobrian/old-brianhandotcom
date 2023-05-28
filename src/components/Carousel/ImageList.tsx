@@ -29,18 +29,18 @@ interface ImageListItemProps {
 
 const ImageListItem = ({ image, activeIndex, index }: ImageListItemProps) => {
   const ref = React.useRef(null);
-  const isActive = activeIndex === index;
+  // const isActive = activeIndex === index;
 
-  React.useEffect(() => {
-    if (ref.current && isActive) {
-      const li = ref.current as HTMLLIElement;
-      li.scrollIntoView({
-        behavior: "smooth",
-        inline: "start",
-        block: "nearest",
-      });
-    }
-  }, [isActive]);
+  // React.useEffect(() => {
+  //   if (ref.current && isActive) {
+  //     const li = ref.current as HTMLLIElement;
+  //     li.scrollIntoView({
+  //       behavior: "smooth",
+  //       inline: "start",
+  //       block: "nearest",
+  //     });
+  //   }
+  // }, [isActive]);
 
   return (
     <div

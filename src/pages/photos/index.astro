@@ -109,6 +109,7 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
     color: var(--accent);
     font-weight: 660;
     transition: opacity ease 200ms;
+    min-width: 300px;
   }
 
   a:hover ~ p {
@@ -127,11 +128,12 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   }
 
   hr {
-    height: 24px;
-    width: 24px;
-    border-radius: 100%;
-    background-color: var(--very-muted);
+    width: 0;
+    height: 0;
     border: none;
-    margin: var(--space-s) auto;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--very-muted);
+    margin: var(--space-l) auto;
   }
 </style>

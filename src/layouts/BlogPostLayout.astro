@@ -13,7 +13,7 @@ import "../styles/blog/blog.css";
       <time>
         {blogPost.data.pubDate.toLocaleDateString()}
       </time>
-      <h1>
+      <h1 id={blogPost.slug}>
         <a href={`#${blogPost.slug}`}>
           {blogPost.data.title}
         </a>
