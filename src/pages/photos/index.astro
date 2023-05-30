@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Carousel from "../../components/Carousel/Carousel";
+import Gallery from "../../components/Gallery/Gallery";
 
 const featuredPhotos = await Astro.glob(
   "/public/images/photos-page/featured/*.webp"
@@ -24,9 +25,9 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   <main>
     <h2>Featured</h2>
     <section class="featured-photos">
-      <Carousel
-        withDots={false}
+      <Gallery
         images={[...featuredPhotos.map((photo) => photo.src)]}
+        client:load
       />
     </section>
     <hr />
