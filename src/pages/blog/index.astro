@@ -11,6 +11,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         {
           blog
             .filter((blog) => !blog.data.draft)
+            .sort((a, b) => {
+              const dateA = a.data.pubDate.getTime();
+              const dateB = b.data.pubDate.getTime();
+              return dateB - dateA;
+            })
             .map((blogPost) => {
               return (
                 <li class="blog-list__list-item">
