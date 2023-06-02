@@ -1,6 +1,7 @@
 import React from "react";
 import ThumbnailButton from "./ThumbnailButton";
 import Controls from "./Controls";
+import useMediaQuery from "../useMediaQuery";
 
 interface GalleryProps {
   images: string[];
@@ -23,6 +24,8 @@ export default function Gallery({ images }: GalleryProps) {
 
     setCurrentImgSrc(images[currentIndex]);
   }, [currentIndex, currentImgSrc, images]);
+
+  const matches = useMediaQuery("(min-width: 400px)");
 
   const increment = () => setCurrentIndex(currentIndex + 1);
   const decrement = () => setCurrentIndex(currentIndex - 1);
@@ -53,7 +56,7 @@ export default function Gallery({ images }: GalleryProps) {
             width: "100%",
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 30,
+            gap: matches ? 30 : 10,
           }}
         >
           {images.map((image, index) => (
