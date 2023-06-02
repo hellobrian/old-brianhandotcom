@@ -8,8 +8,20 @@ interface Props {
 const { variant, href, isCurrent } = Astro.props;
 const aria = { "aria-current": "page" };
 const ariaCurrentPage = isCurrent ? aria : {};
-const activeUnderlineColor =
-  variant === "blog" ? "var(--blue)" : "var(--accent)";
+
+let activeUnderlineColor;
+
+if (variant === "blog") {
+  activeUnderlineColor = "var(--purple)";
+}
+
+if (variant === "other") {
+  activeUnderlineColor = "var(--blue)";
+}
+
+if (variant === "home") {
+  activeUnderlineColor = "var(--black)";
+}
 ---
 
 <a {href} {...ariaCurrentPage}><slot /></a>
@@ -22,7 +34,7 @@ const activeUnderlineColor =
     font-weight: 400;
     pointer-events: auto;
     text-decoration-color: transparent;
-    text-underline-offset: 4px;
+    text-underline-offset: 8px;
     transition: text-decoration-color ease 200ms;
   }
 

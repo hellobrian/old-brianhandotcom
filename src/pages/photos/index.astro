@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Carousel from "../../components/Carousel/Carousel";
+import Gallery from "../../components/Gallery/Gallery";
 
 const featuredPhotos = await Astro.glob(
   "/public/images/photos-page/featured/*.webp"
@@ -11,9 +11,12 @@ const featuredPhotos = await Astro.glob(
   })
 );
 
-const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
-  (files) =>
-    files.map((file) => {
+const photos2023 = await Astro.glob(
+  "/public/images/photos-page/2023/*.webp"
+).then((files) =>
+  files
+    .filter((fileObj) => !fileObj.default.includes("featured"))
+    .map((file) => {
       const filename = file.default.split("__")[1];
       return { src: file.default, filename };
     })
@@ -24,16 +27,17 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   <main>
     <h2>Featured</h2>
     <section class="featured-photos">
-      <Carousel
-        withDots={false}
+      <Gallery
         images={[...featuredPhotos.map((photo) => photo.src)]}
+        client:load
       />
     </section>
-    <hr />
+
     <h2>Photos</h2>
+    <h2>2023</h2>
     <section class="photos">
       {
-        photos.map((photo) => {
+        photos2023.map((photo) => {
           return (
             <div>
               <a href={photo.src}>
@@ -76,7 +80,6 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   }
 
   div {
-    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
@@ -90,7 +93,7 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   img {
     border-radius: 14px;
     transition: opacity ease 200ms;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   img:hover {
@@ -100,10 +103,10 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
   p {
     pointer-events: none;
     opacity: 1;
-    position: absolute;
+    /* position: absolute;
     top: 85%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
     font-family: var(--zodiac);
     text-align: center;
     color: var(--accent);
@@ -112,9 +115,9 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
     min-width: 300px;
   }
 
-  a:hover ~ p {
+  /* a:hover ~ p {
     opacity: 0;
-  }
+  } */
 
   h2 {
     font-family: var(--zodiac);
@@ -134,6 +137,6 @@ const photos = await Astro.glob("/public/images/photos-page/*.webp").then(
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 8px solid var(--very-muted);
-    margin: var(--space-l) auto;
+    /* margin: var(--space-l) auto; */
   }
 </style>

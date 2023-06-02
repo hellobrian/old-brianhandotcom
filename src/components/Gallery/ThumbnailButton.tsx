@@ -1,4 +1,5 @@
 import React from "react";
+import useMediaQuery from "../useMediaQuery";
 
 interface ThumbnailButtonProps {
   image: string;
@@ -11,6 +12,7 @@ export default function ThumbnailButton({
   currentImgSrc,
   onClick,
 }: ThumbnailButtonProps) {
+  const matches = useMediaQuery("(min-width: 400px)");
   return (
     <button
       key={image}
@@ -22,7 +24,7 @@ export default function ThumbnailButton({
         src={image}
         style={{
           width: "100%",
-          borderRadius: "10px",
+          borderRadius: matches ? "10px" : "0px",
           opacity: image === currentImgSrc ? 0.5 : 1,
         }}
       />
