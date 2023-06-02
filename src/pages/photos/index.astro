@@ -11,14 +11,15 @@ const featuredPhotos = await Astro.glob(
   })
 );
 
-const photos = await Astro.glob("/public/images/photos-page/**/*.webp").then(
-  (files) =>
-    files
-      .filter((fileObj) => !fileObj.default.includes("featured"))
-      .map((file) => {
-        const filename = file.default.split("__")[1];
-        return { src: file.default, filename };
-      })
+const photos2023 = await Astro.glob(
+  "/public/images/photos-page/2023/*.webp"
+).then((files) =>
+  files
+    .filter((fileObj) => !fileObj.default.includes("featured"))
+    .map((file) => {
+      const filename = file.default.split("__")[1];
+      return { src: file.default, filename };
+    })
 );
 ---
 
@@ -36,19 +37,16 @@ const photos = await Astro.glob("/public/images/photos-page/**/*.webp").then(
     <h2>2023</h2>
     <section class="photos">
       {
-        photos
-          .filter((photo) => photo.src.includes("2023"))
-          .map((photo) => {
-            console.log(photo);
-            return (
-              <div>
-                <a href={photo.src}>
-                  <img src={photo.src} alt="photo" />
-                </a>
-                <p>{photo.filename}</p>
-              </div>
-            );
-          })
+        photos2023.map((photo) => {
+          return (
+            <div>
+              <a href={photo.src}>
+                <img src={photo.src} alt="photo" />
+              </a>
+              <p>{photo.filename}</p>
+            </div>
+          );
+        })
       }
     </section>
   </main>
